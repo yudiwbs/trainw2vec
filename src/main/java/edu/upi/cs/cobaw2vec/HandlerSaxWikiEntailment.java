@@ -46,7 +46,8 @@ public class HandlerSaxWikiEntailment extends HandlerSaxWiki {
             while (s.hasNext()){
                 String kata = s.next();
                 kata = kata.replaceAll("[“”\",;()\\?:\\*–\\[\\]\\-\\#]", " ");
-                kata = kata.replaceAll("\\.(?!\\d)"," "); //buang titik tapi yang tidak diikuti oleh digit (angka biarkan)
+                //jangan buang titik!! sentence berguna
+                //kata = kata.replaceAll("\\.(?!\\d)"," "); //buang titik tapi yang tidak diikuti oleh digit (angka biarkan)
                 kata = kata.trim();
                 //buang stopwords
                 if (kata.length()<=1) {continue;}

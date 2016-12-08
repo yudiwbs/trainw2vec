@@ -28,12 +28,12 @@ public class XMLtoFileEntailment extends  XMLtoFile {
         PX.preprocess = new PreproEn();
         //PX.maxArtikelDebug = 500;
         HandlerSaxWikiEntailment h = new HandlerSaxWikiEntailment();
-        h.fileDataTest = "E:\\corpus\\corpus_besar\\data_test_gold_rte3.txt";
+        h.fileDataTest  = "E:\\corpus\\corpus_besar\\data_test_gold_rte3.txt";
         h.fileStopWords = "E:\\corpus\\corpus_besar\\en_stopwords.txt";
         h.init();
         PX.handler = h;
         PX.namaFileXML = "E:\\corpus\\corpus_besar\\enwiki-20161101-pages-articles-multistream.xml\\enwiki-20161101-pages-articles-multistream.xml";
-        PX.dirOut      = "E:\\corpus\\corpus_besar\\enwiki-multifile-debug";
+        PX.dirOut      = "E:\\corpus\\corpus_besar\\enwiki-multifile-ver2";
         PX.jumPagePerFile = 5000;  //jumlah artikel per file
         PX.initFile();
         PX.proses();

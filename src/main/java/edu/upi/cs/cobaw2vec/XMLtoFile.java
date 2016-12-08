@@ -15,6 +15,8 @@ import java.io.PrintWriter;
  *   Proses XML  Wikipedia dan pindahkan menjadi file-file teks yang sudah bersih
  *   satu file teks terdiri atas beberapa artikel
  *
+ *   hati-hati jangan membuang titik! kepake untuk word2vec
+ *
  *   Belum dirapikans
  *
  *
@@ -82,13 +84,15 @@ public class XMLtoFile {
                 //id= 1600053
                 //title=Autism
 
-                /*
-                System.out.println(p.getId());
-                System.out.println(p.getTitle());
+
+                //System.out.println(p.getId());
+                //System.out.println(p.getTitle());
                 //id= 27015025
                 //title=Abortion
-
-                if ((p.getId()==27015025) && (p.getTitle().equals("Abortion")) ) { //debug
+                //id=747061155
+                //title=Albedo
+                /*
+                if ((p.getId()==747061155) && (p.getTitle().equals("Albedo")) ) { //debug
                     pPage.println("-----------------------------------------------");
                     pPage.println(p.getText());
                     pPage.println();
@@ -98,6 +102,7 @@ public class XMLtoFile {
                     System.exit(-1); //abort
                 }
                 */
+
 
             }
             //kosongkan
@@ -152,11 +157,11 @@ public class XMLtoFile {
         XMLtoFile PX  = new XMLtoFile();
         PX.handler =  new HandlerSaxWiki();
         PX.preprocess = new PreproEn();
-        PX.maxArtikelDebug = 500;
+        PX.maxArtikelDebug = 50;
         //PX.namaFileXML = "E:\\corpus\\idwiki-latest-pages-articles.xml\\idwiki-latest-pages-articles.xml";
         //PX.dirOut = "E:\\corpus\\wiki-indo-multifile";
         PX.namaFileXML = "E:\\corpus\\corpus_besar\\enwiki-20161101-pages-articles-multistream.xml\\enwiki-20161101-pages-articles-multistream.xml";
-        PX.dirOut = "E:\\corpus\\corpus_besar\\enwiki-multifile-debug";
+        PX.dirOut      = "E:\\corpus\\corpus_besar\\enwiki-multifile-debug";
         PX.proses();
     }
 }

@@ -16,8 +16,11 @@ import java.util.Collection;
  */
 public class TrainDirW2Vec {
     //String path = "E:\\corpus\\wiki-indo-multifile\\test_kecil\\";
-    String path = "E:\\corpus\\wiki-indo-multifile\\semua";
-    String fileOut = "E:\\corpus\\wiki-indo-multifile\\word2vec_full.txt";
+    String path = "E:\\corpus\\corpus_besar\\enwiki-multifile-katatrain-bersih";
+    //String path = "E:\\corpus\\wiki-indo-multifile\\semua";
+    //String fileOut = "E:\\corpus\\wiki-indo-multifile\\word2vec_full.txt";
+    //skip gram
+    String fileOut = "E:\\corpus\\corpus_besar\\word2vec_wiki_layer100_winsize10_minword5.txt";
 
     public void proses() {
         long startTime = System.nanoTime();
@@ -39,7 +42,7 @@ public class TrainDirW2Vec {
                 .iterations(1)
                 .layerSize(100)
                 .seed(42)
-                .windowSize(5)
+                .windowSize(10)
                 .iterate(iter)
                 .tokenizerFactory(t)
                 .build();
