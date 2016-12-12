@@ -279,8 +279,10 @@ public class PostProcEn {
         //harus ada backslash diujung
         //pp.namaDirTujuan = "E:\\corpus\\corpus_besar\\output-coba-postproses\\" ;
 
-        pp.namaDir = "E:\\corpus\\corpus_besar\\enwiki-multifile-katatrain4";
-        pp.namaDirTujuan = "E:\\corpus\\corpus_besar\\enwiki-multifile-katatrain-bersih\\";
+
+        pp.namaDir = "E:\\corpus\\corpus_besar\\enwiki-vocaball-multifile-dgntitik\\";
+        //pp.namaDir = "E:\\corpus\\corpus_besar\\enwiki-multifile-katatrain4";
+        pp.namaDirTujuan = "E:\\corpus\\corpus_besar\\enwiki-multifile-vocaball-dgntitik-bersih\\";
 
         pp.proses();
         /*
