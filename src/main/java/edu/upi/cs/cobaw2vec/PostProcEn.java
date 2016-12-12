@@ -206,12 +206,13 @@ public class PostProcEn {
         //input: E:\corpus\corpus_besar\coba-postproses
         //output: E:\corpus\corpus_besar\output-coba-postproses
         PostProcEn pp = new PostProcEn();
-        pp.namaDir = "E:\\corpus\\corpus_besar\\coba-postproses";
+        //pp.namaDir = "E:\\corpus\\corpus_besar\\coba-postproses";
         //harus ada backslash diujung
-        pp.namaDirTujuan = "E:\\corpus\\corpus_besar\\output-coba-postproses\\" ;
-        //pp.proses();
-        String coba  = "< font >";
-        String[] arrKata = coba.split("<");
-        System.out.println(arrKata[1]);
+        pp.namaDir = "C:\\yudiwbs\\eksperimen\\enwiki-vocabtest-multifile-dgntitik-bag2";
+        pp.namaDirTujuan = "C:\\yudiwbs\\eksperimen\\enwiki-vocabtest-multifile-dgntitik-postpro-bag2\\";
+        pp.proses();
+        //String coba  = "< font >";
+        //String[] arrKata = coba.split("<");
+        //System.out.println(arrKata[1]);
     }
 }
