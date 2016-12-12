@@ -1,5 +1,6 @@
 package edu.upi.cs.cobaw2vec;
 
+import org.deeplearning4j.models.embeddings.learning.impl.elements.CBOW;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
@@ -16,11 +17,19 @@ import java.util.Collection;
  */
 public class TrainDirW2Vec {
     //String path = "E:\\corpus\\wiki-indo-multifile\\test_kecil\\";
-    String path = "E:\\corpus\\corpus_besar\\enwiki-multifile-katatrain-bersih";
     //String path = "E:\\corpus\\wiki-indo-multifile\\semua";
     //String fileOut = "E:\\corpus\\wiki-indo-multifile\\word2vec_full.txt";
-    //skip gram
-    String fileOut = "E:\\corpus\\corpus_besar\\word2vec_wiki_layer100_winsize10_minword5.txt";
+
+    String path = "C:\\yudiwbs\\eksperimen\\enwiki-vocabtest-multifile-dgntitik-postpro-all";
+    String fileOut = "C:\\yudiwbs\\eksperimen\\word2vec_allvocab_wikien_minword5_layer100_windowsize10.txt";
+
+    //argh, gagal training wikipedia semua vocab!!! habis memori
+    //String path = "C:\\yudiwbs\\eksperimen\\enwiki-vocaball-multifile-dgntitik-postpro-all";
+    //String fileOut = "C:\\yudiwbs\\eksperimen\\word2vec_allvocab_wikien_minword5_layer100_windowsize10.txt";
+
+
+    public int tipe = 0; //0 skip gram, 1: cbow default adalah skiprgram
+
 
     public void proses() {
         long startTime = System.nanoTime();
@@ -37,15 +46,30 @@ public class TrainDirW2Vec {
         TokenizerFactory t = new DefaultTokenizerFactory();
         t.setTokenPreProcessor(new CommonPreprocessor());
 
-        Word2Vec vec = new Word2Vec.Builder()
-                .minWordFrequency(5)
-                .iterations(1)
-                .layerSize(100)
-                .seed(42)
-                .windowSize(10)
-                .iterate(iter)
-                .tokenizerFactory(t)
-                .build();
+        Word2Vec vec;
+        if (tipe==0) { //skipgram
+            System.out.println("Skip Gram");
+            vec = new Word2Vec.Builder()
+                    .minWordFrequency(5)
+                    .iterations(1)
+                    .layerSize(100)
+                    .seed(42)
+                    .windowSize(10)
+                    .iterate(iter)
+                    .tokenizerFactory(t)
+                    .build();
+        } else {  //cbow
+            vec = new Word2Vec.Builder()
+                    .minWordFrequency(5)
+                    .iterations(1)
+                    .layerSize(100)
+                    .seed(42)
+                    .windowSize(5)
+                    .iterate(iter)
+                    .tokenizerFactory(t)
+                    .elementsLearningAlgorithm(new CBOW())
+                    .build();
+        }
 
         vec.fit();
         //error utk full
@@ -62,7 +86,7 @@ public class TrainDirW2Vec {
         System.out.println("Waktu (menit):"+duration);
 
 
-        Collection<String> lst = vec.wordsNearest("banten", 10);
+        Collection<String> lst = vec.wordsNearest("Bush", 10);
         System.out.println(lst);
 
 
@@ -70,6 +94,7 @@ public class TrainDirW2Vec {
 
     public static void main(String[] args) {
         TrainDirW2Vec tdw = new TrainDirW2Vec();
+        tdw.tipe = 1; //cbow
         tdw.proses();
     }
 }
